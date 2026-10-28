@@ -1,0 +1,43 @@
+name: Publish PixPDFKit
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Extract production website
+        run: |
+          mkdir -p site
+          unzip -q PixPDFKit-website.zip -d site
+          test -f site/index.html
+          test -f site/.nojekyll
+      - name: Check pages and local links
+        run: |
+          python -m pip install --quiet beautifulsoup4
+          python site/tests/audit.py
+          python site/tests/verify.py
+          node --check site/assets/home.js
+          node --check site/assets/tool.js
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
