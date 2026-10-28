@@ -1,13 +1,17 @@
-# PixPDFKit — Free online PDF tools
+# PixPDFKit — أدوات PDF مجانية / Free PDF tools
 
-Free, bilingual (Arabic and English) PDF utilities. Includes 13 client-side tools and detailed how-to guides. Files remain in the visitor's browser (some JavaScript libraries are loaded from public CDNs).
+Website: **https://mazooniosman299-blip.github.io/PixPDFKit/ar/** (Arabic), [English](https://mazooniosman299-blip.github.io/PixPDFKit/en/).
 
-## Live site (after GitHub Pages is enabled)
-https://mazooniosman299-blip.github.io/PixPDFKit/ar/
+13 PDF tools, 46 bilingual HTML pages and practical guides. All file processing happens in the browser. Some JavaScript libraries are fetched from trusted public CDNs, so an internet connection is needed.
 
-## Publishing
-The complete, tested static website is in `PixPDFKit-website.zip`.
-A GitHub Actions workflow in `.github/workflows/pages.yml` extracts the archive, validates all pages, checks JavaScript syntax, and deploys the generated static directory to GitHub Pages on every push to main. GitHub Pages must be enabled with **GitHub Actions** as the publishing source in repository settings.
+## Live hosting (free)
+The project is live in the isolated `PixPDFKit/` directory of the public GitHub Pages origin repository `mazooniosman299-blip.github.io`. The existing root homepage and unrelated projects were retained.
 
-## AdSense
-There is no revenue/approval guarantee. AdSense requires a supported website address, ownership verification, an eligible AdSense account, original useful content, and review. Do not add unverified ad IDs or fake ads.txt entries.
+Production release: `PixPDFKit-website.zip`. The publishing workflow in the Pages origin repository copies the validated package into its isolated folder. GitHub Pages then serves the static site. The `ci/smoke.js` Chromium end-to-end suite tests conversion and actual downloads across all 13 tools via `.github/workflows/smoke.yml`.
+
+The optional standalone GitHub Pages workflow is manual-only because standalone Pages is not enabled for this repository.
+
+## AdSense and limitations
+A `github.io` subdirectory is **not a standalone domain eligible for direct AdSense submission**. Google requires a supported domain (or an official host-partner route). Do not add a random AdSense publisher ID to `ads.txt`; verify ownership/account and domain eligibility before submission.
+
+Some encrypted PDFs cannot be opened. Compression re-renders PDF pages as images, which can remove selectable/searchable text or increase size. PDF editing can invalidate signatures and interactive elements. Large documents are constrained by browser memory.
