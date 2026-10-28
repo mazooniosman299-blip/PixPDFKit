@@ -4,6 +4,15 @@ Website: **https://mazooniosman299-blip.github.io/PixPDFKit/ar/** (Arabic), [Eng
 
 13 PDF tools, 46 bilingual HTML pages and practical guides. All file processing happens in the browser. Some JavaScript libraries are fetched from trusted public CDNs, so an internet connection is needed.
 
+## Related tool collection — PaperMorrow / أدوات إضافية
+
+[PaperMorrow](https://papermorrow-tools-om.pages.dev/) is a separate, free browser-based collection of PDF and image utilities, including PDF merging and splitting, PDF-to-image conversion, image compression, resizing, and format conversion. Files are processed locally in the browser.
+
+- [أدوات PaperMorrow بالعربية](https://papermorrow-tools-om.pages.dev/ar/)
+- [PaperMorrow tools in English](https://papermorrow-tools-om.pages.dev/)
+
+This is a related project, not an alternative URL for PixPDFKit. Search indexing and AdSense approval are not guaranteed.
+
 ## Live hosting (free)
 The project is live in the isolated `PixPDFKit/` directory of the public GitHub Pages origin repository `mazooniosman299-blip.github.io`. The existing root homepage and unrelated projects were retained.
 
