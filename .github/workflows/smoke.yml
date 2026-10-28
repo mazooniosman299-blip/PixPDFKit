@@ -1,0 +1,32 @@
+name: End-to-end PDF tools test
+on:
+  push:
+    branches: [main]
+    paths: [ 'ci/**', '.github/workflows/smoke.yml', 'PixPDFKit-website.zip' ]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test dependencies
+        run: |
+          npm install --no-save playwright pdf-lib
+          npx playwright install --with-deps chromium
+      - name: Extract site
+        run: |
+          mkdir -p site
+          unzip -q PixPDFKit-website.zip -d site
+      - name: Start local web server
+        run: |
+          nohup python3 -m http.server 8765 --directory site > /tmp/site-server.log 2>&1 &
+          sleep 2
+          curl --fail http://127.0.0.1:8765/en/ >/dev/null
+      - name: Test all 13 PDF tools in Chromium
+        run: node ci/smoke.js
